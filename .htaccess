@@ -1,0 +1,8 @@
+Options -MultiViews
+RewriteEngine On
+
+RewriteRule ^public/ - [L]
+RewriteCond public/$0 -F
+RewriteRule .* public/$0 [L]
+
+RewriteRule . index.php [L]
