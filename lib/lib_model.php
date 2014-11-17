@@ -3,7 +3,7 @@
 class Model
 {
   public $controller_object;
-  public $mysql;
+  public $db;
   public $properties;
   public $errors = array();
 
@@ -37,7 +37,7 @@ class Model
       throw new BadMethodCallException('undefined method `'.$name.'` for '.get_class($this));
     }
 
-    return $this->properties[$name];
+    return array_key_exists($name, $this->properties) ? $this->properties[$name] : null;
   }
 
   public function __set($name, $value) {

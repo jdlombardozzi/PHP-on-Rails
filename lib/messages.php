@@ -32,7 +32,7 @@ class Messages
   public function __get($key) {
     if (array_key_exists($key, $this->current)) return $this->current[$key];
 
-     return null;
+    return null;
   }
 
   public function __set($key, $value)
