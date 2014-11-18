@@ -15,6 +15,8 @@ class View {
    */
   public function __construct($controller_object) {
     $this->controller_object = $controller_object;
+
+    $this->compiled = false;
   }
 
   /**
@@ -23,6 +25,8 @@ class View {
    * @return string
    */
   public function render($script) {
+    if ($this->compiled) return;
+
     ob_start();
     $this->_include($script);
     return ob_get_clean();

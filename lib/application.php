@@ -93,8 +93,6 @@ class Application {
     $this->view_object = new View($this->controller_object);
 
     $this->view_object->content_for('layout', $this->view_object->render("{$this->controller_object->router->module_path}{$this->controller_object->router->controller}/{$this->controller_object->router->action}.phtml"));
-
-    unset($controller_view);
   }
 
   /**

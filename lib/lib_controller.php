@@ -76,10 +76,17 @@ class Controller
   }
 
   // TODO: Still working on this.
-  public function render() {
-    require(BASEDIR.'config/routes.php');
+  public function render($context, $options=array()) {
+    // TODO: Normalize arguments/options
 
-    $router->match_routes();
-    if($router->route_found) { }
+    require_once BASEDIR.'lib/lib_view.php';
+    $view_object = new View($this);
+
+    $view_object->content_for('layout', $view_object->render("{$context}.phtml"));
+
+    // Render and output the display.
+    // TODO: Layout overrides
+    echo $view_object->render("{$this->router->module_path}layouts/application.phtml");
+    exit;
   }
 }
