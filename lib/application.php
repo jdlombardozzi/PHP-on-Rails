@@ -54,7 +54,7 @@ class Application {
       // Ensure class exists
       if(class_exists($class_name)) {
         $this->controller_object = new $class_name($this, $router);
-        $this->controller_object->base_url = (strpos(strtolower($_SERVER['SERVER_PROTOCOL']), 'https') === false ? 'http' : 'https').'://'.$_SERVER['HTTP_HOST'].'/'.(substr(dirname($_SERVER['SCRIPT_NAME']), 1) ? substr(dirname($_SERVER['SCRIPT_NAME']), 1).'/' : '');
+        $this->controller_object->base_url = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].'/'.(substr(dirname($_SERVER['SCRIPT_NAME']), 1) ? substr(dirname($_SERVER['SCRIPT_NAME']), 1).'/' : '');
 
         if(method_exists($this->controller_object, $router->action)) {
           // ... and the action as well! Now, we have to figure out
